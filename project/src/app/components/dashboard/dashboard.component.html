@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h1>Dashboard</h1>
+</div>
+
+<div class="section-header">
+  <h2>Current Month Performance</h2>
+</div>
+<div class="metrics-grid">
+  <div class="metric-card" *ngFor="let metric of currentMonthMetrics">
+    <i class="{{ metric.icon }}" style="font-size: 1.5rem; color: var(--bs-gray-600); margin-bottom: 8px;"></i>
+    <h3 class="metric-value">{{ metric.value }}</h3>
+    <p class="metric-title">{{ metric.title }}</p>
+    <div class="metric-trend" [class]="'trend-' + metric.trend.direction">
+      <i class="bi" [class]="metric.trend.direction === 'up' ? 'bi-arrow-up' : 'bi-arrow-down'"></i>
+      {{ metric.trend.percentage }}
+    </div>
+  </div>
+</div>
+
+<div class="section-header">
+  <h2>All Time Totals</h2>
+</div>
+<div class="metrics-grid">
+  <div class="metric-card" *ngFor="let metric of allTimeMetrics">
+    <i class="{{ metric.icon }}" style="font-size: 1.5rem; color: var(--bs-gray-600); margin-bottom: 8px;"></i>
+    <h3 class="metric-value">{{ metric.value }}</h3>
+    <p class="metric-title">{{ metric.title }}</p>
+    <div class="metric-trend" [class]="'trend-' + metric.trend.direction">
+      <i class="bi" [class]="metric.trend.direction === 'up' ? 'bi-arrow-up' : 'bi-arrow-down'"></i>
+      {{ metric.trend.percentage }}
+    </div>
+  </div>
+</div>

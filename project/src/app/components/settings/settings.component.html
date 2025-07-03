@@ -1,0 +1,183 @@
+<div class="page-header">
+  <h1>Settings</h1>
+</div>
+
+<div class="settings-layout">
+  <div class="settings-nav">
+    <nav class="nav flex-column">
+      <a class="nav-link" [class.active]="activeSection === 'roles'" (click)="activeSection = 'roles'">
+        <i class="bi bi-shield-check me-2"></i>Roles & Permissions
+      </a>
+      <a class="nav-link" [class.active]="activeSection === 'privacy'" (click)="activeSection = 'privacy'">
+        <i class="bi bi-lock me-2"></i>Data Retention & Privacy
+      </a>
+    </nav>
+  </div>
+
+  <div class="settings-content">
+    <!-- Roles & Permissions -->
+    <div *ngIf="activeSection === 'roles'">
+      <h3>Manage Roles & Permissions</h3>
+      <p class="text-muted mb-4">Configure user roles and their associated permissions across different organizations.</p>
+      
+      <!-- Algeos Roles -->
+      <div class="role-group mb-5">
+        <h4 class="role-group-title">
+          <i class="bi bi-building me-2"></i>Algeos Roles
+        </h4>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="card role-card">
+              <div class="card-body text-center">
+                <i class="bi bi-person-fill-gear" style="font-size: 2rem; color: var(--bs-gray-600);"></i>
+                <h5 class="card-title mt-2">Administrator</h5>
+                <p class="card-text">Full system access and user management across all organizations</p>
+                <button class="btn btn-outline-dark btn-sm">Edit Permissions</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="card role-card">
+              <div class="card-body text-center">
+                <i class="bi bi-headset" style="font-size: 2rem; color: var(--bs-gray-600);"></i>
+                <h5 class="card-title mt-2">Support</h5>
+                <p class="card-text">Customer support and basic system operations</p>
+                <button class="btn btn-outline-dark btn-sm">Edit Permissions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clinic Roles -->
+      <div class="role-group mb-5">
+        <h4 class="role-group-title">
+          <i class="bi bi-hospital me-2"></i>Clinic Roles
+        </h4>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="card role-card">
+              <div class="card-body text-center">
+                <i class="bi bi-person-fill-check" style="font-size: 2rem; color: var(--bs-gray-600);"></i>
+                <h5 class="card-title mt-2">Manager</h5>
+                <p class="card-text">Clinic management, order oversight and reporting access</p>
+                <button class="btn btn-outline-dark btn-sm">Edit Permissions</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card role-card">
+              <div class="card-body text-center">
+                <i class="bi bi-person-heart" style="font-size: 2rem; color: var(--bs-gray-600);"></i>
+                <h5 class="card-title mt-2">Clinician</h5>
+                <p class="card-text">Patient care, prescription creation and confection management</p>
+                <button class="btn btn-outline-dark btn-sm">Edit Permissions</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card role-card">
+              <div class="card-body text-center">
+                <i class="bi bi-person-workspace" style="font-size: 2rem; color: var(--bs-gray-600);"></i>
+                <h5 class="card-title mt-2">Secretary</h5>
+                <p class="card-text">Administrative support and patient data management</p>
+                <button class="btn btn-outline-dark btn-sm">Edit Permissions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Printing Portal Roles -->
+      <div class="role-group mb-4">
+        <h4 class="role-group-title">
+          <i class="bi bi-printer me-2"></i>Printing Portal Roles
+        </h4>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="card role-card">
+              <div class="card-body text-center">
+                <i class="bi bi-gear-fill" style="font-size: 2rem; color: var(--bs-gray-600);"></i>
+                <h5 class="card-title mt-2">Operator</h5>
+                <p class="card-text">Manufacturing operations and production management</p>
+                <button class="btn btn-outline-dark btn-sm">Edit Permissions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Retention & Privacy -->
+    <div *ngIf="activeSection === 'privacy'">
+      <h3>Data Retention & Privacy</h3>
+      <p class="text-muted mb-4">Configure data retention policies and privacy settings.</p>
+      
+      <div class="mb-4">
+        <h5>Data Retention Periods</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label class="form-label">Order Data Retention</label>
+              <select class="form-select">
+                <option>7 years (Legal requirement)</option>
+                <option>5 years</option>
+                <option>3 years</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Customer Data Retention</label>
+              <select class="form-select">
+                <option>5 years</option>
+                <option>3 years</option>
+                <option>2 years</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label class="form-label">Log Data Retention</label>
+              <select class="form-select">
+                <option>1 year</option>
+                <option>6 months</option>
+                <option>3 months</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Analytics Data Retention</label>
+              <select class="form-select">
+                <option>2 years</option>
+                <option>1 year</option>
+                <option>6 months</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <h5>Privacy Settings</h5>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="anonymizeData" checked>
+          <label class="form-check-label" for="anonymizeData">
+            Anonymize personal data after retention period
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="encryptBackups" checked>
+          <label class="form-check-label" for="encryptBackups">
+            Encrypt all data backups
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="gdprCompliance" checked>
+          <label class="form-check-label" for="gdprCompliance">
+            Enable GDPR compliance features
+          </label>
+        </div>
+      </div>
+
+      <button class="btn btn-dark">Save Privacy Settings</button>
+    </div>
+  </div>
+</div>

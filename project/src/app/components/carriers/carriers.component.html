@@ -1,0 +1,63 @@
+<div class="page-header">
+  <h1>Carriers</h1>
+</div>
+
+<div class="control-bar">
+  <div class="row align-items-center">
+    <div class="col-md-4">
+      <input type="text" class="form-control" placeholder="Search carriers..." [(ngModel)]="searchTerm" (ngModelChange)="filterCarriers()">
+    </div>
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="serviceFilter" (ngModelChange)="filterCarriers()">
+        <option value="">All Service Types</option>
+        <option value="Standard Delivery">Standard Delivery</option>
+        <option value="Express Delivery">Express Delivery</option>
+        <option value="International">International</option>
+        <option value="Economy">Economy</option>
+        <option value="Premium Express">Premium Express</option>
+      </select>
+    </div>
+    <div class="col-md-5 text-end">
+      <button class="btn btn-dark">
+        <i class="bi bi-plus me-1"></i>Add New Carrier
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="data-table">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Carrier Name</th>
+          <th>Service Type</th>
+          <th>Tracking Link Pattern</th>
+          <th>Contact Info</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let carrier of filteredCarriers">
+          <td>{{ carrier.name }}</td>
+          <td>{{ carrier.serviceType }}</td>
+          <td class="monospace" style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            {{ carrier.trackingPattern }}
+          </td>
+          <td>{{ carrier.contactInfo }}</td>
+          <td>
+            <span class="badge" [class]="carrier.status === 'Active' ? 'bg-success' : 'bg-secondary'">
+              {{ carrier.status }}
+            </span>
+          </td>
+          <td class="action-buttons">
+            <button class="btn btn-sm btn-outline-dark" title="Edit">
+              <i class="bi bi-pencil"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

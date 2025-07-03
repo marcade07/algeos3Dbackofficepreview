@@ -1,0 +1,68 @@
+<div class="page-header">
+  <h1>Products</h1>
+</div>
+
+<div class="control-bar">
+  <div class="row align-items-center">
+    <div class="col-md-4">
+      <input type="text" class="form-control" placeholder="Search products..." [(ngModel)]="searchTerm" (ngModelChange)="filterProducts()">
+    </div>
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="productTypeFilter" (ngModelChange)="filterProducts()">
+        <option value="">All Product Types</option>
+        <option value="Insoles">Insoles</option>
+        <option value="Top Cover">Top Cover</option>
+      </select>
+    </div>
+    <div class="col-md-5 text-end">
+      <button class="btn btn-dark">
+        <i class="bi bi-plus me-1"></i>Add New Product
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="data-table">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name of Product</th>
+          <th>Code/Reference</th>
+          <th>Type of Product</th>
+          <th>Description</th>
+          <th>Stock Level</th>
+          <th>Status</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td>{{ product.name }}</td>
+          <td class="monospace">{{ product.code }}</td>
+          <td>{{ product.productType }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.stock }}</td>
+          <td>
+            <span class="badge" [class]="product.status === 'Active' ? 'bg-success' : 'bg-secondary'">
+              {{ product.status }}
+            </span>
+          </td>
+          <td>£{{ product.price.toFixed(2) }}</td>
+          <td class="action-buttons">
+            <button class="btn btn-sm btn-outline-dark" title="View">
+              <i class="bi bi-eye"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-dark" title="Edit">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger" title="Delete">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
